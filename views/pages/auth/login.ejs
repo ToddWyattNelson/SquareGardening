@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../../partials/mainnavStyle.ejs") %>
+    <link rel="stylesheet" href="/stylesheets/forms.css">
+    <title><%= pageTitle %></title>
+</head>
+
+<body>
+    <%- include("../../partials/mainnav.ejs") %>
+    
+    <div class="center">
+        <h1><%= pageTitle %></h1>
+    </div>
+
+    <main>
+        <div>
+            <!-- if (errorMessage) { %> -->
+            <!-- <div class="user-message user-message--error">S errorMessage %></div> -->
+            <!-- } %> -->
+        </div>
+        <div class="form-container">
+            <form class="login-form" action="./login" method="POST">
+
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" value="<%= oldInput.email %>">
+
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" value="<%= oldInput.password %>">
+
+
+                <button class="btn" type="submit">Login</button>
+            </form>
+            <div class="centered">
+                <a href="/proveRoutes/prove03Routes/prove03R/passReset">Reset Password</a>
+            </div>
+        </div>
+    </main>
+    <%- include("../../partials/footer.ejs") %>
+</body>

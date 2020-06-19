@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../../partials/mainnavStyle.ejs") %>
+    <title>pageTitle</title>
+</head>
+
+<body>
+    <%- include("../../partials/mainnav.ejs") %>
+
+
+
+    <% if (!gardens.length > 0) { %>
+    <h1>No garden plans</h1>
+    <% } else { %>
+
+    <div class="container">
+        <div class="row">
+            <% gardens.forEach( garden => { %>
+
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+
+                    <!-- Item -->
+                    <div class="panel-heading">
+                        <h4><%= garden.gardenId.title %></h4>
+                    </div>
+                    <div class="panel-body"><a href="editGarden/<%= garden.gardenId.id %>"><img
+                                src="/images/variety-of-green-plants-1105019 (1).jpg" class="img-responsive"
+                                style="width:100%" alt="Image"></a></div>
+                    <div class="panel-footer"><%= garden.gardenId.length %> X <%= garden.gardenId.width %>
+
+                        <div>
+                            <a href="editGarden/<%= garden.gardenId.id %>"><button
+                                    class="btn btn-primary">Details</button></a>
+
+                            <form action="/delete-garden" method="POST">
+                                <input type="hidden" value="<%= garden.gardenId.id %>" name="gardenId">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                    <!-- end of item -->
+                </div>
+            </div>
+
+            <% }) %>
+            <!-- for loop  -->
+        </div>
+    </div>
+
+
+    <% } %>
+    <!--  if else  -->
+
+
+    <div>
+        <a class="btn btn-primary btn-lg btn-block mx-auto mt-3" href="/GardenOutLine">make new plan</a>
+    </div>
+    <%- include("../../partials/footer.ejs") %>
+</body>
+
+
+
+</html>

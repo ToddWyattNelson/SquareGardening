@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../../partials/mainnavStyle.ejs") %>
+    <title>pageTitle</title>
+</head>
+
+<body>
+    <%- include("../../partials/mainnav.ejs") %>
+    <a href="/plans">return</a>
+
+    <h1><%= garden.length %></h1>
+    <h1><%= garden.width %></h1>
+    <form action="/saveGarden" method="POST">
+
+        <input type="hidden" value="<%= garden.id %>" name="gardenId">
+        <input type="hidden" value="<%= garden.length %>" name="length">
+        <input type="hidden" value="<%= garden.width %>" name="width">
+
+        <% garden.size.forEach(index =>{%>
+        <% for(let i = 0; i < garden.length; i++) { %>
+        <input type="text" value="<%=index[i]%>" name="index">
+        <% } %>
+        <% }) %>
+
+
+        <button type="submit">Save Garden</button>
+        <%- include("../../partials/footer.ejs") %>
+    </form>
+
+
+
+</body>
+
+</html>

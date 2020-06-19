@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../../partials/mainnavStyle.ejs") %>
+    <link rel="stylesheet" href="/stylesheets/forms.css">
+    <title><%= pageTitle %></title>
+</head>
+
+<body>
+    <%- include("../../partials/mainnav.ejs") %>
+
+     <!-- if (errorMessage) { %> -->
+        <!-- <div class="user-message user-message--error"> errorMessage %></div> -->
+     <!-- } %> -->
+    <div class="form-container">
+        <form class="login-form" action="./signup" method="POST" novalidate>
+            <!-- <input type="text" name="_csrf" value=""> -->
+
+            <label for="email">E-Mail</label>
+            <input type="email" name="email" id="email" value="<%= oldInput.email %>">
+
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" value="<%= oldInput.password %>">
+
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" value="<%= oldInput.confirmPassword %>">
+
+
+            <button class="btn" type="submit">Signup</button>
+        </form>
+    </div>
+    <%- include("../../partials/footer.ejs") %>
+</body>
+
+</html>

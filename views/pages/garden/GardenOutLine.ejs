@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../../partials/mainnavStyle.ejs") %>
+    <link rel="stylesheet" href="/stylesheets/forms.css">
+    <title>pageTitle</title>
+</head>
+
+<body>
+    <%- include("../../partials/mainnav.ejs") %>
+    Outline
+    <main>
+        <div>
+            <!-- if (errorMessage) { %> -->
+            <!-- <div class="user-message user-message--error">S errorMessage %></div> -->
+            <!-- } %> -->
+        </div>
+        <div class="form-container">
+            <form class="login-form" action="/addPlan" method="POST">
+
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="">
+
+                <label for="length">Length</label>
+                <input type="number" name="length" id="length" value="">
+
+                <label for="width">Width</label>
+                <input type="number" name="width" id="width" value="">
+
+
+                <button class="btn" type="submit">Create</button>
+            </form>
+            
+        </div>
+    </main>
+    <%- include("../../partials/footer.ejs") %>
+</body>
+
+</html>
