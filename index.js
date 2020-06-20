@@ -20,6 +20,12 @@ const bodyParser = require('body-parser'); // TODO what does this do?
 
 
 
+
+const corsOptions = {
+  origin: "https://square--gardening.herokuapp.com//",
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 // TODO What does this do?
 const options = {
   useUnifiedTopology: true,
