@@ -6,6 +6,7 @@
 const express = require('express'); // So we don't have to write our own server logic
 const mongoose = require("mongoose"); // This allows uconss to run the server and connect to mongoDB
 const path = require('path'); // TODO what does this do?
+const cors = require('cors') // Place this with other requires (like 'path' and 'express')
 
 
 const session = require('express-session');
@@ -17,7 +18,8 @@ const gardenRoutes = require('./routes/garden');
 const bodyParser = require('body-parser'); // TODO what does this do?
 
 
-
+//sets up way for us to handle middleware
+const app = express();
 
 
 
@@ -25,6 +27,7 @@ const corsOptions = {
   origin: "https://square--gardening.herokuapp.com//",
   optionsSuccessStatus: 200
 };
+
 app.use(cors(corsOptions));
 // TODO What does this do?
 const options = {
@@ -41,8 +44,7 @@ const PORT = process.env.PORT || 5000
 // Our URl to our server
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://CSE_341_users:Mceudc0XYM4dtof9@cluster0-xcgyf.mongodb.net/Square_Gardening";
 
-//sets up way for us to handle middleware
-const app = express();
+
 
 // this will allow us to work with seesions
 const garden = new MongoDBGarden({
