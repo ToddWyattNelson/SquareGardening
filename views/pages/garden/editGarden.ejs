@@ -5,29 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("../../partials/mainnavStyle.ejs") %>
-    <title>pageTitle</title>
+    <link rel="stylesheet" href="/stylesheets/editGarden.css">
+    <title><%= pageTitle %> </title>
 </head>
 
 <body>
     <%- include("../../partials/mainnav.ejs") %>
     <a href="/plans">return</a>
 
-    <h1><%= garden.length %></h1>
-    <h1><%= garden.width %></h1>
-    <form action="/saveGarden" method="POST">
+    <h1 class="text-center">Garden Size: <%= garden.length %> X <%= garden.width %></h1>
 
+    <!-- Print garden -->
+    <form class="gardenForm" action="/saveGarden" method="POST">
         <input type="hidden" value="<%= garden.id %>" name="gardenId">
         <input type="hidden" value="<%= garden.length %>" name="length">
         <input type="hidden" value="<%= garden.width %>" name="width">
 
+        <div class="form-group">
         <% garden.size.forEach(index =>{%>
+
         <% for(let i = 0; i < garden.length; i++) { %>
-        <input type="text" value="<%=index[i]%>" name="index">
+
+        <input type="text" value="<%=index[i]%>" class="gardenInput" name="index">
+        
         <% } %>
+    
+        <br>
+    
         <% }) %>
 
 
-        <button type="submit">Save Garden</button>
+        
+        <!-- Save the garden -->
+        <button class="btn btn-primary" type="submit">Save Garden</button>
         <%- include("../../partials/footer.ejs") %>
     </form>
 

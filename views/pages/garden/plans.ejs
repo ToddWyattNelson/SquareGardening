@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("../../partials/mainnavStyle.ejs") %>
-    <title>pageTitle</title>
+    <title><%= pageTitle %> </title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
     <h1>No garden plans</h1>
     <% } else { %>
 
-    <div class="container">
+    <div class="container ">
         <div class="row">
             <% gardens.forEach( garden => { %>
 
@@ -28,10 +28,13 @@
                     <div class="panel-heading">
                         <h4><%= garden.gardenId.title %></h4>
                     </div>
-                    <div class="panel-body"><a href="editGarden/<%= garden.gardenId.id %>"><img
-                                src="/images/variety-of-green-plants-1105019 (1).jpg" class="img-responsive"
-                                style="width:100%" alt="Image"></a></div>
-                    <div class="panel-footer"><%= garden.gardenId.length %> X <%= garden.gardenId.width %>
+                    <div class="panel-body">
+                        <a href="editGarden/<%= garden.gardenId.id %>">
+                            <img src="/images/variety-of-green-plants-1105019 (1).jpg" class="img-responsive "
+                                 alt="Image">
+                        </a>
+                    </div>
+                    <div class="panel-footer">Size: <%= garden.gardenId.length %> X <%= garden.gardenId.width %>
 
                         <div>
                             <a href="editGarden/<%= garden.gardenId.id %>"><button
