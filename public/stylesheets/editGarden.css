@@ -1,9 +1,78 @@
-.gardenInput{
-    width: 30px;
-    height: 30px;
-    text-align: center
+.saveGarden {
+    margin: 2vw;
 }
 
-.gardenForm{
+.gardenInput{
+    width: 5vw;
+    height: 5vw;
+    text-overflow: '';
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    color: rgba(0, 0, 0, .0);
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: center ;
+    /* icon size, then gradient */
+    background-size: 5vh auto, 100%;
+}
+
+.gardenInput[value="Carrots"] {
+
+    background-image: url(/images/Icons/carrot.svg),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+ 
+}
+
+.gardenInput[value="Empty"] {
+
+    background-image: url(/images/Icons/soil.svg),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+.gardenInput[value="Beets"] {
+
+    background-image: url(/images/Icons/beet.svg),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+.gardenInput[value="Beans"] {
+
+    background-image: url(/images/Icons/green-beans.svg),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+.gardenInput[value="Asparagus"] {
+
+    background-image: url(/images/Icons/asparagus.svg),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+.gardenForm {
     text-align: center;
+    /* border: 1px red solid; */
+}
+
+
+
+
+/* Hover style */
+
+.gardenInput:hover {
+    border-color: green;
+}
+
+/* Focus style */
+
+.gardenInput:focus {
+    border-color: #aaa;
+    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    
+    outline: none;
+}
+
+option{
+    color: #222;
+  
 }

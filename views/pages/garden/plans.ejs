@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("../../partials/mainnavStyle.ejs") %>
+    <link rel="stylesheet" href="/stylesheets/plansStyle.css">
     <title><%= pageTitle %> </title>
 </head>
 
@@ -17,7 +18,7 @@
     <h1>No garden plans</h1>
     <% } else { %>
 
-    <div class="container ">
+    <div class="container lilPadding">
         <div class="row">
             <% gardens.forEach( garden => { %>
 
@@ -28,27 +29,36 @@
                     <div class="panel-heading">
                         <h4><%= garden.gardenId.title %></h4>
                     </div>
+
                     <div class="panel-body">
                         <a href="editGarden/<%= garden.gardenId.id %>">
                             <img src="/images/variety-of-green-plants-1105019 (1).jpg" class="img-responsive "
-                                 alt="Image">
+                                alt="Image">
                         </a>
                     </div>
-                    <div class="panel-footer">Size: <%= garden.gardenId.length %> X <%= garden.gardenId.width %>
 
-                        <div>
-                            <a href="editGarden/<%= garden.gardenId.id %>"><button
-                                    class="btn btn-primary">Details</button></a>
+                    <div class="panel-footer row noPadding" id="plan_footer">
+                        <div class="col-sm-6 noPadding">
+                            Size: <%= garden.gardenId.length %> X <%= garden.gardenId.width %>
+                        </div>
 
-                            <form action="/delete-garden" method="POST">
+
+                        <div class="col-sm-3 noPadding">
+                            <!-- Details -->
+                            <a id="Details_btn" href="editGarden/<%= garden.gardenId.id %>">
+                                <button class="btn btn-primary">Details</button>
+                            </a>
+                        </div>
+
+                        <div class="col-sm-3 noPadding">
+                            <!-- delete -->
+                            <form id="Delete_btn" action="/delete-garden" method="POST">
                                 <input type="hidden" value="<%= garden.gardenId.id %>" name="gardenId">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
-
                         </div>
+
                     </div>
-
-
                     <!-- end of item -->
                 </div>
             </div>
@@ -58,14 +68,11 @@
         </div>
     </div>
 
-
     <% } %>
     <!--  if else  -->
 
+    <a class="btn btn-success btn-lg btn-block  " href="/GardenOutLine">Make New Plan</a>
 
-    <div>
-        <a class="btn btn-primary btn-lg btn-block mx-auto mt-3" href="/GardenOutLine">make new plan</a>
-    </div>
     <%- include("../../partials/footer.ejs") %>
 </body>
 

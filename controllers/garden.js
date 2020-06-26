@@ -43,7 +43,7 @@ exports.postAddPlan = (req, res, next) => {
     for (let widthIndex = 0; widthIndex < req.body.width; widthIndex++) {
         let testArray = [];
         for (let lengthIndex = 0; lengthIndex < req.body.length; lengthIndex++) {
-            testArray[lengthIndex] = total;
+            testArray[lengthIndex] = "Empty";
             total++;
         }
         size.push(testArray);

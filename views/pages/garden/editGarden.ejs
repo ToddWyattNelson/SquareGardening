@@ -10,39 +10,79 @@
 </head>
 
 <body>
-    <%- include("../../partials/mainnav.ejs") %>
-    <a href="/plans">return</a>
 
-    <h1 class="text-center">Garden Size: <%= garden.length %> X <%= garden.width %></h1>
+    <%- include("../../partials/mainnav.ejs") %>
+    <a class="btn btn-primary saveGarden" href="/plans">Return</a>
+
+
 
     <!-- Print garden -->
-    <form class="gardenForm" action="/saveGarden" method="POST">
-        <input type="hidden" value="<%= garden.id %>" name="gardenId">
-        <input type="hidden" value="<%= garden.length %>" name="length">
-        <input type="hidden" value="<%= garden.width %>" name="width">
+    <div id="garden-edit-form">
+        <form class="gardenForm" action="/saveGarden" method="POST" id="gardenForm">
+            <fieldset>
+                <legend>
+                    <h1 class="text-center">Garden Size: <%= garden.length %> X <%= garden.width %></h1>
+                </legend>
+                <input type="hidden" value="<%= garden.id %>" name="gardenId">
+                <input type="hidden" value="<%= garden.length %>" name="length">
+                <input type="hidden" value="<%= garden.width %>" name="width">
 
-        <div class="form-group">
-        <% garden.size.forEach(index =>{%>
+                <div class="">
+                    <% let counter = 0 %>
+                    <% garden.size.forEach(index =>{%>
+                    <% for(let i = 0 ; i < garden.length; i++ ) { %>
 
-        <% for(let i = 0; i < garden.length; i++) { %>
+                    <select value="<%=index[i]%>" class="gardenInput select-css" name="index" id="gardenId<%=counter%>"
+                        onchange="changeIcon('gardenId<%=counter%>')">
+                        <option hidden value="<%=index[i]%>"><%=index[i]%></option>
+                        <option value="Empty">Empty</option>
+                        <option value="Asparagus">Asparagus</option>
+                        <option value="Beans">Beans</option>
+                        <option value="Beets">Beets</option>
+                        <option value="Carrots">Carrots</option>
+                    </select>
+                    <% counter++ } %>
+                    <br>
+                    <% }) %>
+                    <!-- Save the garden -->
+                    <button class="btn btn-success saveGarden" type="submit">Save Garden</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 
-        <input type="text" value="<%=index[i]%>" class="gardenInput" name="index">
-        
-        <% } %>
-    
-        <br>
-    
-        <% }) %>
 
 
-        
-        <!-- Save the garden -->
-        <button class="btn btn-primary" type="submit">Save Garden</button>
-        <%- include("../../partials/footer.ejs") %>
-    </form>
+    <%- include("../../partials/footer.ejs") %>
+    <script>
+        function changeIcon(id) {
+           
+            console.log(id);
+            console.log("Step 1");
+            const elem = document.getElementById(id);
 
-
-
+            console.log(elem.value);
+            if (elem.value == "Empty") {
+                console.log("Step 2");
+                elem.style.backgroundImage =  "url(/images/Icons/soil.svg)";
+            } 
+            else if(elem.value == "Asparagus") {
+                elem.style.backgroundImage =  "url(/images/Icons/asparagus.svg)";
+            } 
+            else if(elem.value == "Beans") {
+                elem.style.backgroundImage =  "url(/images/Icons/green-beans.svg)";
+            } 
+            else if(elem.value == "Beets") {
+                elem.style.backgroundImage =  "url(/images/Icons/beet.svg)";
+            } 
+            else if(elem.value == "Carrots") {
+                elem.style.backgroundImage =  "url(/images/Icons/carrot.svg)";
+            }
+            
+            console.log("Step 3");
+           
+        }
+    </script>
 </body>
 
 </html>
