@@ -15,9 +15,9 @@
         <h1><%= pageTitle %></h1>
     </div>
 
-     <!-- if (errorMessage) { %> -->
-        <!-- <div class="user-message user-message--error"> errorMessage %></div> -->
-     <!-- } %> -->
+    <% if (errorMessage) { %>
+     <div class="user-message user-message--error"> <%= errorMessage %></div>
+    <% } %>
     <div class="form-container">
         <form class="login-form" action="./signup" method="POST" novalidate>
             <!-- <input type="text" name="_csrf" value=""> -->

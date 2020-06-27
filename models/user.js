@@ -37,12 +37,12 @@ userSchema.methods.addToPlans = function (garden) {
     gardenId: garden._id
   });
 
-  console.log("updatedPlanGardens: " + updatedPlanGardens);
+  // console.log("updatedPlanGardens: " + updatedPlanGardens);
   const updatedPlan = {
     gardens: updatedPlanGardens
   };
 
-  console.log("updatedPlan: " + updatedPlan);
+  // console.log("updatedPlan: " + updatedPlan);
   this.plan = updatedPlan;
   return this.save();
 };
@@ -50,7 +50,7 @@ userSchema.methods.addToPlans = function (garden) {
 // remove garden from plans
 userSchema.methods.removeFromPlans = function (gardenId) {
   const updatedPlanGardens = this.plan.gardens.filter(gardens => {
-    console.log("gardens.gardenId: " + gardens.gardenId);
+    // console.log("gardens.gardenId: " + gardens.gardenId);
     return gardens.gardenId.toString() !== gardenId.toString();
   });
   this.plan.gardens = updatedPlanGardens;

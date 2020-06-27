@@ -1,21 +1,35 @@
 const express = require('express');
 const isAuth = require('../middleware/is-auth');
+const { check, body } = require('express-validator/check');
 
 const gardenController = require('../controllers/garden');
 
 const router = express.Router();
 
-router.get("/plans", gardenController.getPlans);
+router.get("/plans", isAuth, gardenController.getPlans);
 
-router.get("/GardenOutLine", gardenController.getGardenOutLine);
+router.get("/GardenOutLine", isAuth, gardenController.getGardenOutLine);
 
-router.post('/addPlan', gardenController.postAddPlan);
+router.post('/addPlan',
+    isAuth,
+    body("title")
+    .isLength({ min: 1 })
+    .withMessage("Need A Title"),
+    body("length")
+    .isFloat({ min: 1, max: 10 })
+    .withMessage("Length Must Be At Least 1 And No More Than 10"),
+    body("width")
+    .isFloat({ min: 1, max: 10 })
+    .withMessage("Width Must Be At Least 1 And No More Than 10"),
+    
 
-router.get('/editGarden/:id', gardenController.getEditGarden);
+    gardenController.postAddPlan);
 
-router.post('/saveGarden', gardenController.postEditGarden);
+router.get('/editGarden/:id', isAuth, gardenController.getEditGarden);
 
-router.post('/delete-garden', gardenController.postDeleteGarden);
+router.post('/saveGarden', isAuth, gardenController.postEditGarden);
+
+router.post('/delete-garden', isAuth, gardenController.postDeleteGarden);
 
 
 

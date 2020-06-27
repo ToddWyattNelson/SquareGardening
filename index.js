@@ -7,7 +7,7 @@ const express = require('express'); // So we don't have to write our own server 
 const mongoose = require("mongoose"); // This allows uconss to run the server and connect to mongoDB
 const path = require('path'); // TODO what does this do?
 const cors = require('cors') // Place this with other requires (like 'path' and 'express')
-
+const flash = require('connect-flash');
 
 const session = require('express-session');
 const MongoDBGarden = require('connect-mongodb-session')(session);
@@ -69,6 +69,8 @@ app.use(
   })
 );
 
+// Using Flash
+app.use(flash());
 
 
 // Our routes
@@ -98,7 +100,7 @@ app
 
   .use((req, res, next) => {
     // 404 page
-    res.render('pages/404', { title: '404 - Page Not Found', path: req.url })
+    res.render('pages/404', { pageTitle: '404 - Page Not Found', path: req.url })
   })
 
 

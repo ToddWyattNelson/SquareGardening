@@ -1,21 +1,22 @@
 
 const bcrypt = require('bcryptjs');
+const { validationResult } = require('express-validator/check');
 
 const User = require('../models/user');
 
 exports.getLogin = (req, res, next) => {
-  // let message = req.flash('error');
-  // if (message.length > 0) {
-  //   message = message[0];
-  // } else {
-  //   message = null;
-  // }
-  
+  let message = req.flash('error');
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+
   res.render('pages/auth/login', {
     isAuthenticated: req.session.isLoggedIn,
     path: '/login',
     pageTitle: 'Login',
-    //   errorMessage: message,
+    errorMessage: message,
     oldInput: {
       email: '',
       password: ''
@@ -28,19 +29,20 @@ exports.postLogin = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   return res.status(422).render('auth/login', {
-  //     path: '/login',
-  //     pageTitle: 'Login',
-  //     errorMessage: errors.array()[0].msg,
-  //     oldInput: {
-  //       email: email,
-  //       password: password
-  //     },
-  //     validationErrors: errors.array()
-  //   });
-  // }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).render('pages/auth/login', {
+      isAuthenticated: req.session.isLoggedIn,
+      path: '/login',
+      pageTitle: 'Login',
+      errorMessage: errors.array()[0].msg,
+      oldInput: {
+        email: email,
+        password: password
+      },
+      validationErrors: errors.array()
+    });
+  }
 
   User.findOne({ email: email })
     .then(user => {
@@ -96,17 +98,17 @@ exports.postLogin = (req, res, next) => {
 
 
 exports.getSignup = (req, res, next) => {
-  // let message = req.flash('error');
-  // if (message.length > 0) {
-  //   message = message[0];
-  // } else {
-  //   message = null;
-  // }
+  let message = req.flash('error');
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   res.render('pages/auth/signup', {
     isAuthenticated: req.session.isLoggedIn,
     path: '/signup',
     pageTitle: 'Signup',
-    // errorMessage: message,
+    errorMessage: message,
     oldInput: {
       email: '',
       password: '',
@@ -120,23 +122,24 @@ exports.getSignup = (req, res, next) => {
 exports.postSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   return res.status(422)
-  //     .render('pages/proveAssignments/prove03view/signup', {
-  //       path: '/signup',
-  //       pageTitle: "Signup",
-  //       isAuthenticated: false,
-  //       errorMessage: errors.array()[0].msg,
-  //       oldInput: {
-  //         email: email,
-  //         password: password,
-  //         confirmPassword: req.body.confirmPassword
-  //       }
-  //     });
-  // }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422)
+      .render('pages/auth/signup', {
+        path: '/signup',
+        pageTitle: "Signup",
+        isAuthenticated: false,
+        errorMessage: errors.array()[0].msg,
+        oldInput: {
+          email: email,
+          password: password,
+          confirmPassword: req.body.confirmPassword
+        }
+      });
+  }
 
-  bcrypt.hash(password, 12)
+  bcrypt
+    .hash(password, 12)
     .then(hashedPassword => {
       const user = new User({
         email: email,
@@ -162,7 +165,7 @@ exports.postSignup = (req, res, next) => {
 
 exports.postlogout = (req, res, next) => {
   req.session.destroy(err => {
-      console.log(err);
-      res.redirect('/login');
+    console.log(err);
+    res.redirect('/login');
   });
 };

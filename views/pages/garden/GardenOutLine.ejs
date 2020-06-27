@@ -11,29 +11,29 @@
 
 <body>
     <%- include("../../partials/mainnav.ejs") %>
-    Outline
+    <h1><%= pageTitle %></h1>
     <main>
         <div>
-            <!-- if (errorMessage) { %> -->
-            <!-- <div class="user-message user-message--error">S errorMessage %></div> -->
-            <!-- } %> -->
+            <% if (errorMessage) { %>
+            <div class="user-message user-message--error"> <%= errorMessage %></div>
+            <% }  %>
         </div>
         <div class="form-container">
             <form class="login-form" action="/addPlan" method="POST">
 
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" value="">
+                <input type="text" name="title" id="title" value="<%= oldInput.title %>">
 
                 <label for="length">Length</label>
-                <input type="number" name="length" id="length" value="">
+                <input type="number" name="length" id="length" value="<%= oldInput.length %>">
 
                 <label for="width">Width</label>
-                <input type="number" name="width" id="width" value="">
+                <input type="number" name="width" id="width" value="<%= oldInput.width %>">
 
 
                 <button class="btn" type="submit">Create</button>
             </form>
-            
+
         </div>
     </main>
     <%- include("../../partials/footer.ejs") %>
