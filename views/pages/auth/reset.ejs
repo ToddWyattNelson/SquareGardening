@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../../partials/mainnavStyle.ejs") %>
+    <link rel="stylesheet" href="/stylesheets/forms.css">
+    <title><%= pageTitle %></title>
+</head>
+
+<body>
+    <%- include("../../partials/mainnav.ejs") %>
+    
+    <div class="center">
+        <h1><%= pageTitle %></h1>
+    </div>
+
+    <main>
+        <div>
+            <% if (errorMessage) { %>
+            <div class="user-message user-message--error"> <%= errorMessage %></div>
+            <% }  %>
+        </div>
+        <div class="form-container">
+            <form class="login-form" action="/reset" method="POST">
+
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" >
+
+                <button class="btn" type="submit">Reset</button>
+            </form>
+        </div>
+    </main>
+    <%- include("../../partials/footer.ejs") %>
+</body>

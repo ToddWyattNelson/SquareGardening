@@ -17,7 +17,7 @@ router.post('/login',
         .isLength({ min: 5 })
         .isAlphanumeric()
         .trim(),
-        
+
     authController.postLogin);
 
 router.get('/signup', authController.getSignup);
@@ -54,5 +54,19 @@ router.post('/signup',
     authController.postSignup);
 
 router.get("/logout", authController.postlogout);
+
+router.get('/reset', authController.getReset);
+
+router.post('/reset', authController.postReset);
+
+router.get('/reset/:token', authController.getNewPassword);
+
+router.post('/new-password',
+    body(
+        'password',
+        'Please enter a password with only numbers and text and at least 5 characters.'
+    )
+        .isLength({ min: 5 })
+        .isAlphanumeric(), authController.postNewPassword);
 
 module.exports = router;
