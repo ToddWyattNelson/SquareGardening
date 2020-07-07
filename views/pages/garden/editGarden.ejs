@@ -54,16 +54,16 @@
 
 
     <%- include("../../partials/footer.ejs") %>
-    <script>
+    <script >
         function changeIcon(id) {
            
             console.log(id);
-            console.log("Step 1");
+            // console.log("Step 1");
             const elem = document.getElementById(id);
 
             console.log(elem.value);
             if (elem.value == "Empty") {
-                console.log("Step 2");
+                // console.log("Step 2");
                 elem.style.backgroundImage =  "url(/images/Icons/soil.svg)";
             } 
             else if(elem.value == "Asparagus") {
@@ -79,7 +79,7 @@
                 elem.style.backgroundImage =  "url(/images/Icons/carrot.svg)";
             }
             
-            console.log("Step 3");
+            // console.log("Step 3");
            
         }
     </script>
