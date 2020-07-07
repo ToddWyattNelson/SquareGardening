@@ -30,7 +30,7 @@
                 <label for="width">Width</label>
                 <input type="number" name="width" id="width" value="<%= oldInput.width %>">
 
-
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <button class="btn" type="submit">Create</button>
             </form>
 

@@ -31,9 +31,9 @@
                 <label for="password">Password</label>
                 <input type="text" name="password" id="password" value="<%= oldInput.password %>">
 
-
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <button class="btn" type="submit">Login</button>
-                <a id="PasswordReset" href="/reset">Reset Password</a>
+                <a id="PasswordReset" href="/reset">Forgot Password?</a>
             </form>
         </div>
     </main>

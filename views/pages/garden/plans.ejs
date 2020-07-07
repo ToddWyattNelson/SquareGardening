@@ -54,6 +54,7 @@
                             <!-- delete -->
                             <form id="Delete_btn" action="/delete-garden" method="POST">
                                 <input type="hidden" value="<%= garden.gardenId.id %>" name="gardenId">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
                         </div>

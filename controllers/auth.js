@@ -22,7 +22,7 @@ exports.getLogin = (req, res, next) => {
   }
 
   res.render('pages/auth/login', {
-    isAuthenticated: req.session.isLoggedIn,
+    // isAuthenticated: req.session.isLoggedIn,
     path: '/login',
     pageTitle: 'Login',
     errorMessage: message,
@@ -41,7 +41,7 @@ exports.postLogin = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).render('pages/auth/login', {
-      isAuthenticated: req.session.isLoggedIn,
+      // isAuthenticated: req.session.isLoggedIn,
       path: '/login',
       pageTitle: 'Login',
       errorMessage: errors.array()[0].msg,
@@ -57,7 +57,7 @@ exports.postLogin = (req, res, next) => {
     .then(user => {
       if (!user) {
         return res.status(422).render('pages/auth/login', {
-          isAuthenticated: req.session.isLoggedIn,
+          // isAuthenticated: req.session.isLoggedIn,
           path: '/login',
           pageTitle: 'Login',
           errorMessage: 'Invalid email or password.',
@@ -81,7 +81,7 @@ exports.postLogin = (req, res, next) => {
             });
           }
           return res.status(422).render('pages/auth/login', {
-            isAuthenticated: req.session.isLoggedIn,
+            // isAuthenticated: req.session.isLoggedIn,
             path: '/login',
             pageTitle: 'Login',
             errorMessage: 'Invalid email or password.',
@@ -114,7 +114,7 @@ exports.getSignup = (req, res, next) => {
     message = null;
   }
   res.render('pages/auth/signup', {
-    isAuthenticated: req.session.isLoggedIn,
+    // isAuthenticated: req.session.isLoggedIn,
     path: '/signup',
     pageTitle: 'Signup',
     errorMessage: message,
@@ -137,7 +137,7 @@ exports.postSignup = (req, res, next) => {
       .render('pages/auth/signup', {
         path: '/signup',
         pageTitle: "Signup",
-        isAuthenticated: false,
+        // isAuthenticated: false,
         errorMessage: errors.array()[0].msg,
         oldInput: {
           email: email,
@@ -190,7 +190,7 @@ exports.getReset = (req, res, next) => {
     path: '/reset',
     pageTitle: 'Reset Password',
     errorMessage: message,
-    isAuthenticated: req.session.isLoggedIn,
+    // isAuthenticated: req.session.isLoggedIn,
   });
 };
 
@@ -247,7 +247,7 @@ exports.getNewPassword = (req, res, next) => {
         errorMessage: message,
         userId: user._id.toString(),
         passwordToken: token,
-        isAuthenticated: req.session.isLoggedIn
+        // isAuthenticated: req.session.isLoggedIn
       });
     })
     .catch(err => {
@@ -269,7 +269,7 @@ exports.postNewPassword = (req, res, next) => {
   //     .render('pages/auth/new-password', {
   //       path: '/new-password',
   //       pageTitle: "New Password",
-  //       isAuthenticated: false,
+        isAuthenticated: false,
   //       errorMessage: errors.array()[0].msg,
   //     });
   // }

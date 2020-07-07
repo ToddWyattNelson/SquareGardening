@@ -45,6 +45,7 @@
                     <br>
                     <% }) %>
                     <!-- Save the garden -->
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <button class="btn btn-success saveGarden" type="submit">Save Garden</button>
                 </div>
             </fieldset>

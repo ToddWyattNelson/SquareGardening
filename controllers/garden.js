@@ -13,7 +13,7 @@ exports.getPlans = (req, res, next) => {
                 path: 'pages/garden/plans',
                 pageTitle: 'Plans',
                 gardens: gardens,
-                isAuthenticated: req.session.isLoggedIn
+                // isAuthenticated: req.session.isLoggedIn
             });
         })
         .catch(err => {
@@ -34,7 +34,7 @@ exports.getGardenOutLine = (req, res, next) => {
         errorMessage: message,
         path: '/garden/GardenOutLine',
         pageTitle: 'Outline',
-        isAuthenticated: req.session.isLoggedIn,
+        // isAuthenticated: req.session.isLoggedIn,
         oldInput: {
             length: '',
             width: '',
@@ -52,7 +52,7 @@ const title =req.body.title
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).render('pages/garden/GardenOutLine', {
-        isAuthenticated: req.session.isLoggedIn,
+        // isAuthenticated: req.session.isLoggedIn,
         path: '/pages/garden/GardenOutLine',
         pageTitle: 'Outline',
         errorMessage: errors.array()[0].msg,
@@ -125,7 +125,7 @@ exports.getEditGarden = (req, res, next) => {
                 pageTitle: "About " + garden.id,
                 path: '/pages/garden/editGarden',
                 garden: garden,
-                isAuthenticated: req.session.isLoggedIn
+                // isAuthenticated: req.session.isLoggedIn
             });
 
         })

@@ -8,6 +8,7 @@ const mongoose = require("mongoose"); // This allows uconss to run the server an
 const path = require('path'); // TODO what does this do?
 const cors = require('cors') // Place this with other requires (like 'path' and 'express')
 const flash = require('connect-flash');
+const csrf = require('csurf');
 
 const session = require('express-session');
 const MongoDBGarden = require('connect-mongodb-session')(session);
@@ -21,7 +22,7 @@ const bodyParser = require('body-parser'); // TODO what does this do?
 //sets up way for us to handle middleware
 const app = express();
 
-
+const csrfProtection = csrf();
 
 const corsOptions = {
   origin: "https://square--gardening.herokuapp.com//",
@@ -69,8 +70,18 @@ app.use(
   })
 );
 
+//CSRF Token
+app.use(csrfProtection);
+
 // Using Flash
 app.use(flash());
+
+// So I don't have to keep adding isAuthenticated and csrfToken
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn;
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 
 
 // Our routes
