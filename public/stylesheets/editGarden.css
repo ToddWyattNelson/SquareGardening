@@ -18,35 +18,67 @@
 
 .gardenInput[value="Carrots"] {
 
-    background-image: url(/images/Icons/carrot.svg),
+    background-image: url("/images/Icons/carrot.svg"),
     linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
  
 }
 
 .gardenInput[value="Empty"] {
 
-    background-image: url(/images/Icons/soil.svg),
+    background-image: url("/images/Icons/soil.svg"),
     linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
 
 }
 .gardenInput[value="Beets"] {
 
-    background-image: url(/images/Icons/beet.svg),
+    background-image: url("/images/Icons/beet.svg"),
     linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
 
 }
 .gardenInput[value="Beans"] {
 
-    background-image: url(/images/Icons/green-beans.svg),
+    background-image: url("/images/Icons/green-beans.svg"),
     linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
 
 }
 .gardenInput[value="Asparagus"] {
 
-    background-image: url(/images/Icons/asparagus.svg),
+    background-image: url("/images/Icons/asparagus.svg"),
     linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
 
 }
+.gardenInput[value="Pumpkins"] {
+
+    background-image: url("/images/Icons/pumpkin.svg"),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+.gardenInput[value="Radishs"] {
+
+    background-image: url("/images/Icons/radish.svg"),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+.gardenInput[value="Onions"] {
+
+    background-image: url("/images/Icons/onion.svg"),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+.gardenInput[value="Strawberrys"] {
+
+    background-image: url("/images/Icons/strawberry.svg"),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+.gardenInput[value="Tomatos"] {
+
+    background-image: url("/images/Icons/tomato.svg"),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+
+}
+
+
 .gardenForm {
     text-align: center;
     /* border: 1px red solid; */
@@ -59,6 +91,7 @@
 
 .gardenInput:hover {
     border-color: green;
+    cursor:  url("/images/Icons/shovel.png"), auto;
 }
 
 /* Focus style */
@@ -74,5 +107,6 @@
 
 option{
     color: #222;
-  
 }
+
+
